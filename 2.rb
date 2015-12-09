@@ -1011,7 +1011,7 @@ input = "29x13x26
 14x3x5
 10x9x8"
 
-def calulate_paper(string)
+def calculate_paper(string)
   array = string.split("\n").map{ | x | x.strip }
   feet = 0
   array.each do | box |
@@ -1023,7 +1023,7 @@ def calulate_paper(string)
   return feet
 end
 
-puts calulate_paper(input)
+puts calculate_paper(input)
 
 #
 # --- Part Two ---

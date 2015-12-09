@@ -13,7 +13,6 @@
 require 'digest'
 
 input = "iwrupvqb"
-# input = "abcdef"
 
 def get_hash_five(string)
   lowest = []
@@ -23,12 +22,6 @@ def get_hash_five(string)
     return i if hex.to_s[0..4] == "00000"
   end
 end
-# Compute digest by chunks
-# md5 = Digest::MD5.new
-# md5.update 'message1'
-# md5 << 'message2'                     # << is an alias for update
-#
-# md5.hexdigest                         #=> "94af09c09bb9..."
 
 def get_hash_six(string)
   1_000_001.upto(1_000_000_000) do |i|
