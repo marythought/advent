@@ -320,7 +320,7 @@ class Grid
   def populate
     0.upto @size-1 do |x|
       0.upto @size-1 do |y|
-        @lights["#{x},#{y}"] = "off"
+        @lights["#{x},#{y}"] = 0
       end
     end
   end
@@ -355,25 +355,22 @@ class Grid
   end
 
   def is_on? light # comes in as single array ie [491, 615]
-    @lights["#{light[0]},#{light[1]}"] == "on"
+    @lights["#{light[0]},#{light[1]}"] > 0
   end
 
   def turn_off light
-    @lights["#{light[0]},#{light[1]}"] = "off"
+    @lights["#{light[0]},#{light[1]}"] -= 1 if @lights["#{light[0]},#{light[1]}"] > 0
   end
 
   def turn_on light
-    @lights["#{light[0]},#{light[1]}"] = "on"
+    @lights["#{light[0]},#{light[1]}"] += 1
   end
 
   def toggle(light1, light2)
     these_lights = get_range(light1, light2)
     these_lights.each do |light|
-      if is_on? light
-        turn_off light
-      else
-        turn_on light
-      end
+      turn_on light
+      turn_on light
     end
   end
 
@@ -395,7 +392,7 @@ class Grid
     puts "counting..."
     lights_on = 0
     @lights.each_key do |key|
-      lights_on += 1 if @lights[key] == "on"
+      lights_on += @lights[key] if @lights[key] > 0
     end
     return lights_on
   end
@@ -404,22 +401,4 @@ end
 grid = Grid.new(1000)
 grid.process_input(lines)
 puts grid.count_lights
-#232493 too low...
-
-
-# --- Day 6: Probably a Fire Hazard ---
-#
-# Because your neighbors keep defeating you in the holiday house decorating contest year after year, you've decided to deploy one million lights in a 1000x1000 grid.
-#
-# Furthermore, because you've been especially nice this year, Santa has mailed you instructions on how to display the ideal lighting configuration.
-#
-# Lights in your grid are numbered from 0 to 999 in each direction; the lights at each corner are at 0,0, 0,999, 999,999, and 999,0. The instructions include whether to turn on, turn off, or toggle various inclusive ranges given as coordinate pairs. Each coordinate pair represents opposite corners of a rectangle, inclusive; a coordinate pair like 0,0 through 2,2 therefore refers to 9 lights in a 3x3 square. The lights all start turned off.
-#
-# To defeat your neighbors this year, all you have to do is set up your lights by doing the instructions Santa sent you in order.
-#
-# For example:
-#
-# turn on 0,0 through 999,999 would turn on (or leave on) every light.
-# toggle 0,0 through 999,0 would toggle the first line of 1000 lights, turning off the ones that were on, and turning on the ones that were off.
-# turn off 499,499 through 500,500 would turn off (or leave off) the middle four lights.
-# After following the instructions, how many lights are lit?
+# 912549 too low...
