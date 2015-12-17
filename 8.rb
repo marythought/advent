@@ -9,7 +9,7 @@ input.each do |line|
   puts line.length
   chars_in_code += line.length # all chars
   new_line = line[1..-2] # remove end quotes
-  new_line = new_line.gsub(/\\x\w\w/, '\'').gsub(/\\"/, '"' ).gsub(/\\\\/, '\\')# find and replace \" with " and \\ with \
+  new_line = new_line.gsub(/\\x[a-fA-F0-9]{2}/, '\'').gsub(/\\"/, '"' ).gsub(/\\\\/, '\\')# find and replace \" with " and \\ with \
   print new_line + " : "
   puts new_line.length
   chars_in_memory += new_line.length
