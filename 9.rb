@@ -20,12 +20,12 @@ destination_array = destinations.sort
 this_listing = destination_array.shift
 start_city, destination_city = this_listing[0].split(", ")
 
-      AlphaCentauri | Arbre | Faerun | Norrath | Snowdin | Straylight | Tambi | Tristram
-AC        x
-Ar                      x
-Fae                              x
-Nor                                       x
-Snow                                                x
-Stray                                                           x
-Tam                                                                        x
-Tri                                                                               x
+#       AlphaCentauri | Arbre | Faerun | Norrath | Snowdin | Straylight | Tambi | Tristram
+# AC        x
+# Ar                      x
+# Fae                              x
+# Nor                                       x
+# Snow                                                x
+# Stray                                                           x
+# Tam                                                                        x
+# Tri                                                                               x

@@ -31,3 +31,12 @@ In part 2, we set the value of b to the return value of a and run the find_value
 
 ## Day 8
 This string chasing was pretty painful to do in Ruby. I keep a running count of characters in code vs characters in memory and manually convert the incoming strings to remove / process escaped text. I can't bear to tackle part 2 yet.
+
+## Day 9
+That's a nope.
+
+## Day 10
+I originally took the input integer and turned it into an array of string number characters. This worked but took too long, and I found a hint to try byteslicing instead. I created a function to perform "look say" on the numbers that searches through each number string, tracking the last number to see if it matches the next number. When a match is found, the count increases. When there's no match, the count followed by the integer is added to the result string. I then run this function 40 times (first part: working) and an additional 10 times (second part: still too slow! not working).
+
+## Day 16
+This is pretty ugly but I couldn't resist the opportunity to create a class Sue. Both assigning Sue's attributes and finding if she's a match desperately want for refactoring.
