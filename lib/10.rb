@@ -13,9 +13,6 @@
 # 111221 becomes 312211 (three 1s, two 2s, and one 1).
 # Starting with the digits in your puzzle input, apply this process 40 times. What is the length of the result?
 
-input = 1113222113
-input_string = input.to_s
-
 def look_say string
   result = ""
   last = string.byteslice(0)
@@ -34,11 +31,12 @@ def look_say string
   result += last
 end
 
-50.times do
-  input_string = look_say input_string
+def look_say_x_times(x, input_string)
+  x.times do
+    input_string = look_say input_string
+  end
+  return input_string.length
 end
-
-puts input_string.length
 
 # 10.times do
 #   input = look_say input_array

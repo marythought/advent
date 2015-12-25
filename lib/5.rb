@@ -1,5 +1,3 @@
-input = IO.read("inputs/5.txt").chomp!
-
 # --- Day 5: Doesn't He Have Intern-Elves For This? ---
 #
 # Santa needs help figuring out which strings in his text file are naughty or nice.
@@ -48,8 +46,6 @@ def twinsies(string)
   false
 end
 
-puts nice_strings(input)
-
 #Now, a nice string is one with all of the following properties:
 
 def nicer_strings(input)
@@ -92,5 +88,3 @@ def triplets?(string)
   end
   false
 end
-
-puts nicer_strings(input)

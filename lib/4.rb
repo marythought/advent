@@ -6,8 +6,6 @@
 #
 require 'digest'
 
-input = "iwrupvqb"
-
 def get_hash_five(string)
   1.upto(1_000_000) do |i|
     md5 = Digest::MD5.new
@@ -23,6 +21,3 @@ def get_hash_six(string)
     return i if hex.to_s[0..5] == "000000"
   end
 end
-
-puts get_hash_five(input)
-puts get_hash_six(input)

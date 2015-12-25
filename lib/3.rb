@@ -5,8 +5,6 @@
 #
 # However, the elf back at the north pole has had a little too much eggnog, and so his directions are a little off, and Santa ends up visiting some houses more than once. How many houses receive at least one present?
 
-input = IO.read("inputs/3.txt").chomp!
-
 def deliver_presents(input)
   delivered = [[0,0]]
   input = input.split("")
@@ -24,8 +22,6 @@ def deliver_presents(input)
   end
   delivered.uniq.length
 end
-
-puts deliver_presents(input)
 
 # --- Part Two ---
 #
@@ -69,5 +65,3 @@ def get_move(move, delivery_array)
     [delivery_array[-1][0], delivery_array[-1][1] - 1]
   end
 end
-
-puts robo_santa(input)
