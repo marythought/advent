@@ -113,7 +113,7 @@ class Elf
 end
 
 input = 36000000
-control_num = 50_000
+control_num = 60_000
 santa = Santa.new(input, control_num)
 # neighborhood = Neighborhood.new(input, control_num)
 # elf_fleet = Elf_Fleet.new(neighborhood, control_num)
