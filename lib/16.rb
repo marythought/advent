@@ -27,15 +27,14 @@ class Sue
            ((@cars.is_a?(Fixnum) && @cars == 2) || @cars == "?") &&
            ((@perfumes.is_a?(Fixnum) && @perfumes) == 1 || @perfumes == "?")
   end
-
 end
-
-input = IO.readlines("inputs/16.txt")
 
 # Sue 1: goldfish: 6, trees: 9, akitas: 0\n
 
-input = input.map do |sue|
-  sue.split(" ").map{|item|item.gsub(":", "").gsub(",", "")}
+def clean16(input)
+  input = input.map do |sue|
+    sue.split(" ").map{|item|item.gsub(":", "").gsub(",", "")}
+  end
 end
 
 def assign(this_sue, first, first_num, second, second_num, third, third_num)
@@ -71,32 +70,68 @@ def assign(this_sue, first, first_num, second, second_num, third, third_num)
   this_sue.perfumes = third_num.to_i if third == "perfumes"
 end
 
-sues = []
+def process_sues(input)
+  sues = []
 
-input.each do |sue|
-  sue.shift
-  number, first, first_num, second, second_num, third, third_num = sue
-  this_sue = Sue.new(number)
-  assign(this_sue, first, first_num, second, second_num, third, third_num)
-  sues << this_sue
-end
+  input.each do |sue|
+    sue.shift
+    number, first, first_num, second, second_num, third, third_num = sue
+    this_sue = Sue.new(number)
+    assign(this_sue, first, first_num, second, second_num, third, third_num)
+    sues << this_sue
+  end
 
-sues.each do |sue|
-  puts sue.number if sue.is_match?
+  sues.each do |sue|
+    return sue.number.to_i if sue.is_match?
+  end
 end
 
 
 # Part Two match
 
-# def is_match?
-#   return ((@children.is_a?(Fixnum) && @children == 3) || @children == "?") &&
-#          ((@cats.is_a?(Fixnum) && @cats > 7) || @cats == "?") &&
-#          ((@samoyeds.is_a?(Fixnum) && @samoyeds == 2) || @samoyeds == "?") &&
-#          ((@pomeranians.is_a?(Fixnum) && @pomeranians < 3) || @pomeranians == "?") &&
-#          ((@akitas.is_a?(Fixnum) && @akitas == 0) || @akitas == "?") &&
-#          ((@vizslas.is_a?(Fixnum) && @vizslas == 0) || @vizslas == "?") &&
-#          ((@goldfish.is_a?(Fixnum) && @goldfish < 5) || @goldfish == "?") &&
-#          ((@trees.is_a?(Fixnum) && @trees > 3) || @trees == "?") &&
-#          ((@cars.is_a?(Fixnum) && @cars == 2) || @cars == "?") &&
-#          ((@perfumes.is_a?(Fixnum) && @perfumes) == 1 || @perfumes == "?")
-# end
+class Sue2
+  attr_accessor :number, :children, :cats, :samoyeds, :pomeranians, :akitas, :vizslas, :goldfish, :trees, :cars, :perfumes
+
+  def initialize(number)
+    @number = number
+    @children = "?"
+    @cats = "?"
+    @samoyeds = "?"
+    @pomeranians = "?"
+    @akitas = "?"
+    @vizslas = "?"
+    @goldfish = "?"
+    @trees = "?"
+    @cars = "?"
+    @perfumes = "?"
+  end
+
+  def is_match?
+    return ((@children.is_a?(Fixnum) && @children == 3) || @children == "?") &&
+           ((@cats.is_a?(Fixnum) && @cats > 7) || @cats == "?") &&
+           ((@samoyeds.is_a?(Fixnum) && @samoyeds == 2) || @samoyeds == "?") &&
+           ((@pomeranians.is_a?(Fixnum) && @pomeranians < 3) || @pomeranians == "?") &&
+           ((@akitas.is_a?(Fixnum) && @akitas == 0) || @akitas == "?") &&
+           ((@vizslas.is_a?(Fixnum) && @vizslas == 0) || @vizslas == "?") &&
+           ((@goldfish.is_a?(Fixnum) && @goldfish < 5) || @goldfish == "?") &&
+           ((@trees.is_a?(Fixnum) && @trees > 3) || @trees == "?") &&
+           ((@cars.is_a?(Fixnum) && @cars == 2) || @cars == "?") &&
+           ((@perfumes.is_a?(Fixnum) && @perfumes) == 1 || @perfumes == "?")
+  end
+end
+
+def process_sues2(input)
+  sues = []
+
+  input.each do |sue|
+    sue.shift
+    number, first, first_num, second, second_num, third, third_num = sue
+    this_sue = Sue2.new(number)
+    assign(this_sue, first, first_num, second, second_num, third, third_num)
+    sues << this_sue
+  end
+
+  sues.each do |sue|
+    return sue.number.to_i if sue.is_match?
+  end
+end

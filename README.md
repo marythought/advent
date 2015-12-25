@@ -1,7 +1,36 @@
 # Advent of Code 2015
 
+## To Test:
+* `bundle install`
+* `rake test`
+
+## Progress
+### TODO:
+* 8 part 2 (reverse string engineering)
+* 9 (traveling salesperson problem)
+* 10 part 2 (byteslicing)
+* 11 (santa's password)
+* 12 (JSON parsing)
+* 13 (seating chart)
+* 14 (reindeer olympics)
+* 15 (cookie science)
+* 17 (eggnog containers)
+* 18 (moar grid lights)
+* 19 (medicine molecule mutations)
+* 20 (infinite elf present delivery)
+* 21 (RPG generator)
+* 22 (more RPG stuff)
+* 23 (Turing problem)
+* 24 ("quantum entanglement" wtf)
+
+### Completed:
+* 1 - 7
+* 8 part 1
+* 10 part 1
+* 16
+
 ## Day 1
-To find what floor Santa needs to go to, I converted the string input to an array and am shifting off the values, adding or subtracting to floors depending on the value, until the array is empty. The function returns an integer with the end value of floor.
+To find what floor Santa needs to go to, I converted the string input to an array and reversed it to create a heap. I'm then popping off the values, adding or subtracting to floors depending on the value, until the heap is empty. The function returns an integer with the end value of floor.
 
 For the second part of the question, I iterate over the array with index and return the index as soon as floor becomes negative. This gives the position at which Santa enters the basement.
 

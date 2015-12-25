@@ -1,12 +1,12 @@
-input = IO.read("inputs/7.txt").chomp!
-
-lines = input.each_line.map do |line|
-  line.split("->").map do |entry|
-    entry.strip
+def clean(input)
+  lines = input.each_line.map do |line|
+    line.split("->").map do |entry|
+      entry.strip
+    end
   end
 end
 
-# [["gl AND gm", "go"], ["he RSHIFT 5", "hh"], ["NOT gb", "gc"], ["hq AND hs", "ht"], ["hz RSHIFT 3", "ib"], ["hz RSHIFT 2", "ia"], ["fq OR fr", "fs"], ["hx OR hy", "hz"], ["he AND hp", "hr"], ["gj RSHIFT 5", "gm"], ["hf AND hl", "hn"], ["hv OR hu", "hw"], ["NOT hj", "hk"], ["gj RSHIFT 3", "gl"], ["fo RSHIFT 3", "fq"], ["he RSHIFT 2", "hf"], ["44430", "b"]]
+# [["gl AND gm", "go"], ["he RSHIFT 5", "hh"], ["NOT gb", "gc"], ["hq AND hs", "ht"], ["hz RSHIFT 3", "ib"], ["hz RSHIFT 2", "ia"]]
 
 class Toy
   attr_accessor :wires
@@ -54,14 +54,3 @@ class Toy
     @wires = {}
   end
 end
-
-toy = Toy.new
-toy.parse_inputs(lines)
-old_a = toy.find_value("a")
-puts toy.wires["b"]
-toy.wires["b"] = toy.find_value("a")
-toy.reset
-toy.parse_inputs(lines)
-toy.wires["b"] = old_a
-puts "now the value of b is #{toy.wires["b"]}"
-puts toy.find_value("a")

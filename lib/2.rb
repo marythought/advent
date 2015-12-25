@@ -5,8 +5,6 @@
 # Fortunately, every present is a box (a perfect right rectangular prism), which makes calculating the required wrapping paper for each gift a little easier: find the surface area of the box, which is 2*l*w + 2*w*h + 2*h*l. The elves also need a little extra paper for each present: the area of the smallest side.
 
 
-input = IO.read("inputs/2.txt").chomp!
-
 def calculate_paper(string)
   array = string.split("\n")
   feet = 0
@@ -18,8 +16,6 @@ def calculate_paper(string)
   end
   feet
 end
-
-puts calculate_paper(input)
 
 # --- Part Two ---
 #
@@ -37,5 +33,3 @@ def calculate_ribbon(string)
   end
   feet
 end
-
-puts calculate_ribbon(input)
