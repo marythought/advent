@@ -1,6 +1,6 @@
 # Advent of Code 2015
 
-![advent tree](https://raw.github.com/marythought/advent/master/images/advent-tree.12.26.15.png)
+![advent tree](https://raw.githubusercontent.com/marythought/advent/master/images/advent_tree_12.26.15.png)
 
 ## To Test:
 * `bundle install`
