@@ -27,9 +27,9 @@
 class Santa
   attr_accessor :lowest
 
-  def initialize(input, control_num)
-    @neighborhood = Neighborhood.new(input, control_num)
-    @elf_fleet = Elf_Fleet.new(@neighborhood, control_num)
+  def initialize(input, control_start, control_stop)
+    @neighborhood = Neighborhood.new(input, control_start, control_stop)
+    @elf_fleet = Elf_Fleet.new(@neighborhood, control_start, control_stop)
     @elf_fleet.engage
     @lowest = @neighborhood.find_lowest
   end
@@ -38,8 +38,9 @@ end
 class Neighborhood
   attr_accessor :houses
 
-  def initialize(input, num_houses=500_000)
+  def initialize(input, start=1, num_houses=500_000)
     puts "initializing neighborhood"
+    @start = start
     @num_houses = num_houses
     @houses = []
     @input = input
@@ -48,7 +49,7 @@ class Neighborhood
 
   def populate
     puts "populating neighborhood"
-    1.upto @num_houses do |x|
+    @start.upto @num_houses do |x|
       house = House.new(x)
       # puts house.num
       @houses << house
@@ -56,10 +57,17 @@ class Neighborhood
   end
 
   def find_lowest
+    lowest = []
     @houses.each do |house|
       if house.presents >= @input
-        puts house.num
+        lowest << house
+        break
       end
+    end
+    if lowest.length > 1
+      return lowest[0].num
+    else
+      return "not found"
     end
   end
 end
@@ -74,7 +82,8 @@ class House
 end
 
 class Elf_Fleet
-  def initialize(neighborhood, num_elves=500_000)
+  def initialize(neighborhood, start=1, num_elves=500_000)
+    @start = start
     @num_elves = num_elves
     @elves = []
     @neighborhood = neighborhood
@@ -82,7 +91,7 @@ class Elf_Fleet
   end
 
   def populate
-    1.upto @num_elves do |x|
+    @start.upto @num_elves do |x|
       elf = Elf.new(x)
       @elves << elf
     end
@@ -112,10 +121,13 @@ class Elf
   end
 end
 
-input = 36000000
-control_num = 60_000
-santa = Santa.new(input, control_num)
+input = 36_000_000
+control_start = 10_000_000
+control_stop = 11_000_000
+santa = Santa.new(input, control_start, control_stop)
 # neighborhood = Neighborhood.new(input, control_num)
 # elf_fleet = Elf_Fleet.new(neighborhood, control_num)
 # elf_fleet.engage
 puts santa.lowest
+
+# must be higher than 5_300_000

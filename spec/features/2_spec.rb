@@ -2,7 +2,7 @@ require "spec_helper"
 require "2.rb"
 
 describe '2' do
-  input = IO.read("inputs/2.txt").chomp!
+  input = IO.readlines("inputs/2.txt")
 
   it "returns a valid result" do
     assert_equal calculate_paper(input), 1586300

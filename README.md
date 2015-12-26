@@ -8,7 +8,6 @@
 ### TODO:
 * 8 part 2 (reverse string engineering)
 * 9 (traveling salesperson problem)
-* 10 part 2 (byteslicing)
 * 11 (santa's password)
 * 12 (JSON parsing)
 * 13 (seating chart)
@@ -17,11 +16,16 @@
 * 17 (eggnog containers)
 * 18 (moar grid lights)
 * 19 (medicine molecule mutations)
-* 20 (infinite elf present delivery)
-* 21 (RPG generator)
+* 20 part 2
+* 21 part 2
 * 22 (more RPG stuff)
 * 23 (Turing problem)
 * 24 ("quantum entanglement" wtf)
+
+### Close but no Cigar:
+* 10 part 2 (byteslicing) - using the same calculation as part 1 takes too long. I must not be using / understanding byteslicing correctly.
+* 20 part 1 (infinite elf present delivery) - I modeled out Neighborhood, House, Elf and am attempting to use OOP to populate the neighborhood and send out elves with presents, then check the number of delivered presents to see whether the input criteria is met. If not, try a higher number of elves and houses. There must be a math shortcut I'm not aware of.
+* 21 part 1 (RPG generator) - I have the OOP classes in place but I need to generate all possible item combinations and then try equipping them and running a fight, keeping track of the lowest gold cost for all winning combos.
 
 ### Completed:
 * 1 - 7
@@ -35,7 +39,7 @@ To find what floor Santa needs to go to, I converted the string input to an arra
 For the second part of the question, I iterate over the array with index and return the index as soon as floor becomes negative. This gives the position at which Santa enters the basement.
 
 ## Day 2
-For the wrapping paper problem, I accept the input as a string and split it into an array. I then iterate over the array, assigning length, width, and height to each box (values sorted smallest to largest), and calculating the paper (or ribbon) needed.
+For the wrapping paper problem, I accept the input as an array of lines and then iterate over the array, assigning length, width, and height to each box (values sorted smallest to largest), and calculating the paper (or ribbon) needed.
 
 ## Day 3
 To find which houses Santa has visited, I start by declaring an array of arrays "delivered" (a grid) at his current location. I then shift off his next move and save that new location in delivered. When he's done, I call the length of unique records in delivered for a house count.
