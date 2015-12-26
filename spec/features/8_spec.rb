@@ -10,6 +10,6 @@ describe '8' do
 
   it "returns a valid result for second part" do
     skip
-    assert_equal 0, encode(input),
+    assert_equal 0, encode(input)
   end
 end

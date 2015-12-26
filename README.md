@@ -6,9 +6,7 @@
 
 ## Progress
 ### TODO:
-* 8 part 2 (reverse string engineering)
 * 9 (traveling salesperson problem)
-* 12 (JSON parsing)
 * 13 (seating chart)
 * 14 (reindeer olympics)
 * 17 (eggnog containers)
@@ -17,6 +15,8 @@
 * 22 (more RPG stuff)
 * 23 (Turing problem)
 * 24 ("quantum entanglement" wtf)
+* 8 part 2 (reverse string engineering)
+* 12 part 2 (JSON parsing)
 
 ### Close but no Cigar:
 * 10 part 2 (byteslicing) - using the same calculation as part 1 takes too long. I must not be using / understanding byteslicing correctly.
@@ -29,6 +29,7 @@
 * 8 part 1 (string conversions)
 * 10 part 1 (looksay, byteslicing)
 * 11 (santa's password)
+* 12 part 1 (JSON parsing)
 * 16 (aunt sues)
 
 ### Day 1
@@ -71,6 +72,9 @@ I originally took the input integer and turned it into an array of string number
 
 ### Day 11
 Ruby shines here with the .next string method! I wrote three boolean functions to test the password criteria and cycle through .next until the string passes all three. Some regexing and .split/pop-ing to test character patterns. I'm proud of my doubles method here -- it collects all double letter pairs then calls .uniq on them, thus eliminating the need to worry about letter triples inflating the count, or testing for repeat double pair content ("aaooaa").
+
+### Day 12
+Simple split on a regex expression that eliminates anything NaN (or a negative sign, which got me into trouble on my first attempt). Map the resulting array to integers and reduce them to a single sum. Still need to tackle the second part.
 
 ### Day 16
 This is pretty ugly but I couldn't resist the opportunity to create a class Sue. Both assigning Sue's attributes and finding if she's a match desperately want for refactoring.
