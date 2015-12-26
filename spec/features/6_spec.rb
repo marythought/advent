@@ -10,7 +10,7 @@ describe '6' do
     # works but takes a long time
     grid = Grid.new(1000)
     grid.process_input(lines)
-    assert_equal grid.count_lights, 543903
+    assert_equal 543903, grid.count_lights
   end
 
   it "returns a valid result for second part" do
@@ -18,6 +18,6 @@ describe '6' do
     # works but takes a long time
     grid = Grid2.new(1000)
     grid.process_input(lines)
-    assert_equal grid.count_lights, 14687245
+    assert_equal 14687245, grid.count_lights
   end
 end

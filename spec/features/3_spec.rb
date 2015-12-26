@@ -5,7 +5,7 @@ describe '3' do
   input = IO.read("inputs/3.txt").chomp!
 
   it "returns a valid result" do
-    assert_equal deliver_presents(input), 2592
-    assert_equal robo_santa(input), 2360
+    assert_equal 2592, deliver_presents(input)
+    assert_equal 2360, robo_santa(input)
   end
 end
