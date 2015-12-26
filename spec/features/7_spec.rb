@@ -8,7 +8,7 @@ describe '7' do
 
   it "returns a valid result for first part" do
     toy.parse_inputs(lines)
-    assert_equal toy.find_value("a"), 3176
+    assert_equal 3176, toy.find_value("a")
   end
 
   it "returns a valid result for second part" do
@@ -16,6 +16,6 @@ describe '7' do
     toy.reset
     toy.parse_inputs(lines)
     toy.wires["b"] = old_a
-    assert_equal toy.find_value("a"), 14710
+    assert_equal 14710, toy.find_value("a")
   end
 end
