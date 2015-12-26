@@ -21,15 +21,15 @@
 ### Close but no Cigar:
 * 10 part 2 (byteslicing) - using the same calculation as part 1 takes too long. I must not be using / understanding byteslicing correctly.
 * 15 (cookie science) - I have the OOP in place just need to calculate all the possible cookie combos
-* 20 (infinite elf present delivery) - I modeled out Neighborhood, House, Elf and am attempting to use OOP to populate the neighborhood and send out elves with presents, then check the number of delivered presents to see whether the input criteria is met. If not, try a higher number of elves and houses. There must be a math shortcut I'm not aware of.
-* 21 (RPG generator) - I have the OOP classes in place but I need to generate all possible item combinations and then try equipping them and running a fight, keeping track of the lowest gold cost for all winning combos.
+* 20 (infinite elf present delivery) - I modeled out Neighborhood, House, Elf and am attempting to use OOP to populate the neighborhood and send out elves with presents, then check the number of delivered presents to see whether the input criteria is met. If not, try a higher number of elves and houses. There must be a math shortcut I haven't figured out yet.
+* 21 (RPG generator) - I have the OOP classes in place, I just need to generate all possible item combinations and then try equipping them and running a fight, keeping track of the lowest gold cost for all winning combos.
 
 ### Completed:
 * 1 - 7
-* 8 part 1
-* 10 part 1
+* 8 part 1 (string conversions)
+* 10 part 1 (looksay, byteslicing)
 * 11 (santa's password)
-* 16
+* 16 (aunt sues)
 
 ### Day 1
 To find what floor Santa needs to go to, I converted the string input to an array and reversed it to create a heap. I'm then popping off the values, adding or subtracting to floors depending on the value, until the heap is empty. The function returns an integer with the end value of floor.
