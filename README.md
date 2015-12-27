@@ -10,7 +10,6 @@
 ### TODO:
 * 9 (traveling salesperson problem)
 * 13 (seating chart)
-* 14 (reindeer olympics)
 * 17 (eggnog containers)
 * 18 (moar grid lights)
 * 19 (medicine molecule mutations)
@@ -32,6 +31,7 @@
 * 10 part 1 (looksay, byteslicing)
 * 11 (santa's password)
 * 12 part 1 (JSON parsing)
+* 14 (reindeer olympics)
 * 16 (aunt sues)
 
 ### Day 1
@@ -77,6 +77,9 @@ Ruby shines here with the .next string method! I wrote three boolean functions t
 
 ### Day 12
 Simple split on a regex expression that eliminates anything NaN (or a negative sign, which got me into trouble on my first attempt). Map the resulting array to integers and reduce them to a single sum. Still need to tackle the second part.
+
+### Day 14
+I really enjoyed this OOP Reindeer Olympics exercise. I created three classes, Reindeer, Track, and Race, where each reindeer is registered and instantiates a track, which tracks its progress in an array literal [x,x,x,x,x,x,Reindeer,x,x,x,x,x,]. Reindeer's position can be recalled by calling an index search on the track. The track keeps track of whether a reindeer is flying or resting and how long it has been in that state, comparing it to the reindeer's required fly and rest times each second and advancing accordingly. Part 2 required adding a points property to class Reindeer and two new methods to find and set the lead reindeer, and run the new-format race, awarding points to the reindeer in the lead after each second.
 
 ### Day 16
 This is pretty ugly but I couldn't resist the opportunity to create a class Sue. Both assigning Sue's attributes and finding if she's a match desperately want for refactoring.
