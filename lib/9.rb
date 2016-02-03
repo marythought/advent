@@ -2,10 +2,8 @@ input = IO.read("inputs/9.txt").chomp!
 
 destinations = {}
 
-lines = input.each_line.map do |line|
-  line.split(" = ").map do |entry|
-    entry.strip
-  end
+input.each_line.map do |line|
+  line.split(" = ").map(&:strip)
 end.each do |line|
   line[0] = line[0].split(" to ").sort.join(", ")
   destinations[line[0]] = line[1]

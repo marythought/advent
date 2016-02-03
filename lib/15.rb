@@ -1,8 +1,10 @@
 # --- Day 15: Science for Hungry People ---
 #
-# Today, you set out on the task of perfecting your milk-dunking cookie recipe. All you have to do is find the right balance of ingredients.
+# Today, you set out on the task of perfecting your milk-dunking cookie recipe.
+# All you have to do is find the right balance of ingredients.
 
-# Given the ingredients in your kitchen and their properties, what is the total score of the highest-scoring cookie you can make?
+# Given the ingredients in your kitchen and their properties, what is the total
+# score of the highest-scoring cookie you can make?
 
 input = "Sprinkles: capacity 5, durability -1, flavor 0, texture 0, calories 5
 PeanutButter: capacity -1, durability 3, flavor 0, texture 0, calories 1
@@ -26,7 +28,8 @@ class Cookie
 
   def initialize
     @ingredients = []
-    # {11=>#<Ingredient:0x007fd538e48bc0 @name="Sprinkles", @capacity=5, @durability=-1, @flavor=0, @texture=0>, "PeanutButter"...}
+    # {11=>#<Ingredient:0x007fd538e48bc0 @name="Sprinkles", @capacity=5,
+    # @durability=-1, @flavor=0, @texture=0>, "PeanutButter"...}
     @capacity = 0
     @durability = 0
     @flavor = 0
@@ -52,7 +55,7 @@ class Cookie
     @texture = 0 if @texture < 0
   end
 
-  def get_score
+  def score
     @capacity * @durability * @flavor * @texture
   end
 end
@@ -70,7 +73,7 @@ class TestKitchen
 
   def process_input
     lines = @input.split("\n")
-    lines = lines.map { |line| line.split(": ") }.map { |line| [line[0], line[-1].split(/capacity | durability | flavor | texture | calories /)]}.map {|line| line.flatten}.each {|line| line.delete("")}
+    lines = lines.map { |line| line.split(": ") }.map { |line| [line[0], line[-1].split(/capacity | durability | flavor | texture | calories /)]}.map(&:flatten).each { |line| line.delete("")}
     lines.each do |line|
       ingredient = Ingredient.new(line.shift, line.shift.to_i, line.shift.to_i, line.shift.to_i, line.shift.to_i, line.shift.to_i)
       @ingredients << ingredient
@@ -98,10 +101,10 @@ class TestKitchen
     end
   end
 
-  def get_scores
+  def scores
     @cookies.each do |cookie|
-      puts cookie.get_score
-      @best_cookie = cookie.get_score if cookie.get_score > @best_cookie
+      puts cookie.score
+      @best_cookie = cookie.score if cookie.score > @best_cookie
     end
     @best_cookie
   end
@@ -111,4 +114,4 @@ tk = TestKitchen.new(input)
 tk.process_input
 tk.find_combos
 tk.make_cookies
-puts tk.get_scores
+puts tk.scores

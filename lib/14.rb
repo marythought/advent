@@ -1,8 +1,11 @@
 # --- Day 14: Reindeer Olympics ---
 #
-# This year is the Reindeer Olympics! Reindeer can fly at high speeds, but must rest occasionally to recover their energy. Santa would like to know which of his reindeer is fastest, and so he has them race.
+# This year is the Reindeer Olympics! Reindeer can fly at high speeds, but must
+# rest occasionally to recover their energy. Santa would like to know which
+# of his reindeer is fastest, and so he has them race.
 #
-# Reindeer can only either be flying (always at their top speed) or resting (not moving at all), and always spend whole seconds in either state.
+# Reindeer can only either be flying (always at their top speed) or resting
+# (not moving at all), and always spend whole seconds in either state.
 
 class Reindeer
   attr_accessor :name, :distance, :fly_time, :rest_time, :track, :points
@@ -69,10 +72,10 @@ class Race
   end
 
   def register_racers(input)
-    input = input.map{|line| line.split(" can fly ")}
-    input = input.map{|line| [line[0], line[-1].split(/\D/)]}.flatten
+    input = input.map { |line| line.split(" can fly ") }
+    input = input.map { |line| [line[0], line[-1].split(/\D/)] }.flatten
     input.delete("")
-    while input.length > 0 do
+    while input.length > 0
       reindeer = Reindeer.new(input.shift, input.shift, input.shift, input.shift)
       @racers << reindeer
     end
@@ -83,7 +86,7 @@ class Race
     @racers.each do |reindeer|
       reindeer_positions[reindeer] = reindeer.track.find_reindeer_index
     end
-    @lead = reindeer_positions.map{ |k, v| k if v == reindeer_positions.values.max }.compact
+    @lead = reindeer_positions.map { |k, v| k if v == reindeer_positions.values.max }.compact
   end
 
   def run_race
@@ -95,8 +98,12 @@ class Race
     @racers.map { |reindeer| reindeer.track.find_reindeer_index }.sort[-1]
   end
 
-  # Seeing how reindeer move in bursts, Santa decides he's not pleased with the old scoring system.
-  # Instead, at the end of each second, he awards one point to the reindeer currently in the lead. (If there are multiple reindeer tied for the lead, they each get one point.) He keeps the traditional 2503 second time limit, of course, as doing otherwise would be entirely ridiculous.
+  # Seeing how reindeer move in bursts, Santa decides he's not pleased with the
+  # old scoring system.
+  # Instead, at the end of each second, he awards one point to the reindeer
+  # currently in the lead. (If there are multiple reindeer tied for the lead,
+  # they each get one point.) He keeps the traditional 2503 second time limit,
+  # of course, as doing otherwise would be entirely ridiculous.
 
   def run_race_with_points
     @time.times do

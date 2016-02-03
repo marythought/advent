@@ -1,5 +1,6 @@
 class Sue
-  attr_accessor :number, :children, :cats, :samoyeds, :pomeranians, :akitas, :vizslas, :goldfish, :trees, :cars, :perfumes
+  attr_accessor :number, :children, :cats, :samoyeds, :pomeranians, :akitas,
+                :vizslas, :goldfish, :trees, :cars, :perfumes
 
   def initialize(number)
     @number = number
@@ -16,24 +17,24 @@ class Sue
   end
 
   def is_match?
-    return ((@children.is_a?(Fixnum) && @children == 3) || @children == "?") &&
-           ((@cats.is_a?(Fixnum) && @cats == 7) || @cats == "?") &&
-           ((@samoyeds.is_a?(Fixnum) && @samoyeds == 2) || @samoyeds == "?") &&
-           ((@pomeranians.is_a?(Fixnum) && @pomeranians == 3) || @pomeranians == "?") &&
-           ((@akitas.is_a?(Fixnum) && @akitas == 0) || @akitas == "?") &&
-           ((@vizslas.is_a?(Fixnum) && @vizslas == 0) || @vizslas == "?") &&
-           ((@goldfish.is_a?(Fixnum) && @goldfish == 5) || @goldfish == "?") &&
-           ((@trees.is_a?(Fixnum) && @trees == 3) || @trees == "?") &&
-           ((@cars.is_a?(Fixnum) && @cars == 2) || @cars == "?") &&
-           ((@perfumes.is_a?(Fixnum) && @perfumes) == 1 || @perfumes == "?")
+    ((@children.is_a?(Fixnum) && @children == 3) || @children == "?") &&
+      ((@cats.is_a?(Fixnum) && @cats == 7) || @cats == "?") &&
+      ((@samoyeds.is_a?(Fixnum) && @samoyeds == 2) || @samoyeds == "?") &&
+      ((@pomeranians.is_a?(Fixnum) && @pomeranians == 3) || @pomeranians == "?") &&
+      ((@akitas.is_a?(Fixnum) && @akitas == 0) || @akitas == "?") &&
+      ((@vizslas.is_a?(Fixnum) && @vizslas == 0) || @vizslas == "?") &&
+      ((@goldfish.is_a?(Fixnum) && @goldfish == 5) || @goldfish == "?") &&
+      ((@trees.is_a?(Fixnum) && @trees == 3) || @trees == "?") &&
+      ((@cars.is_a?(Fixnum) && @cars == 2) || @cars == "?") &&
+      ((@perfumes.is_a?(Fixnum) && @perfumes) == 1 || @perfumes == "?")
   end
 end
 
 # Sue 1: goldfish: 6, trees: 9, akitas: 0\n
 
 def clean16(input)
-  input = input.map do |sue|
-    sue.split(" ").map{|item|item.gsub(":", "").gsub(",", "")}
+  input.map do |sue|
+    sue.split(" ").map{ |item| item.gsub(":", "").gsub(",", "")}
   end
 end
 

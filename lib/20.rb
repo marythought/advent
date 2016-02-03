@@ -1,13 +1,18 @@
 # --- Day 20: Infinite Elves and Infinite Houses ---
 #
-# To keep the Elves busy, Santa has them deliver some presents by hand, door-to-door. He sends them down a street with infinite houses numbered sequentially: 1, 2, 3, 4, 5, and so on.
+# To keep the Elves busy, Santa has them deliver some presents by hand,
+# door-to-door. He sends them down a street with infinite houses numbered
+# sequentially: 1, 2, 3, 4, 5, and so on.
 #
-# Each Elf is assigned a number, too, and delivers presents to houses based on that number:
+# Each Elf is assigned a number, too, and delivers presents to houses based
+# on that number:
 #
 # The first Elf (number 1) delivers presents to every house: 1, 2, 3, 4, 5, ....
-# The second Elf (number 2) delivers presents to every second house: 2, 4, 6, 8, 10, ....
+# The second Elf (number 2) delivers presents to every second house:
+# 2, 4, 6, 8, 10, ....
 # Elf number 3 delivers presents to every third house: 3, 6, 9, 12, 15, ....
-# There are infinitely many Elves, numbered starting with 1. Each Elf delivers presents equal to ten times his or her number at each house.
+# There are infinitely many Elves, numbered starting with 1. Each Elf
+# delivers presents equal to ten times his or her number at each house.
 #
 # So, the first nine houses on the street end up like this:
 #
@@ -20,7 +25,9 @@
 # House 7 got 80 presents.
 # House 8 got 150 presents.
 # House 9 got 130 presents.
-# The first house gets 10 presents: it is visited only by Elf 1, which delivers 1 * 10 = 10 presents. The fourth house gets 70 presents, because it is visited by Elves 1, 2, and 4, for a total of 10 + 20 + 40 = 70 presents.
+# The first house gets 10 presents: it is visited only by Elf 1, which
+# delivers 1 * 10 = 10 presents. The fourth house gets 70 presents, because
+# it is visited by Elves 1, 2, and 4, for a total of 10 + 20 + 40 = 70 presents.
 #
 # What is the lowest house number of the house to get at least as many presents as the number in your puzzle input?
 
@@ -38,7 +45,7 @@ end
 class Neighborhood
   attr_accessor :houses
 
-  def initialize(input, start=1, num_houses=500_000)
+  def initialize(input, start = 1, num_houses = 500_000)
     puts "initializing neighborhood"
     @start = start
     @num_houses = num_houses
@@ -64,11 +71,7 @@ class Neighborhood
         break
       end
     end
-    if lowest.length > 1
-      return lowest[0].num
-    else
-      return "not found"
-    end
+    lowest.length > 1 ? lowest[0].num : "not found"
   end
 end
 
@@ -81,8 +84,8 @@ class House
   end
 end
 
-class Elf_Fleet
-  def initialize(neighborhood, start=1, num_elves=500_000)
+class ElfFleet
+  def initialize(neighborhood, start = 1, num_elves = 500_000)
     @start = start
     @num_elves = num_elves
     @elves = []
@@ -113,7 +116,7 @@ class Elf
   end
 
   def deliver(neighborhood)
-    neighborhood.houses.select do | house |
+    neighborhood.houses.select do |house|
       house.num.modulo(@num).zero?
     end.each do |house|
       house.presents += (10 * @num)
@@ -126,7 +129,7 @@ control_start = 10_000_000
 control_stop = 11_000_000
 santa = Santa.new(input, control_start, control_stop)
 # neighborhood = Neighborhood.new(input, control_num)
-# elf_fleet = Elf_Fleet.new(neighborhood, control_num)
+# elf_fleet = ElfFleet.new(neighborhood, control_num)
 # elf_fleet.engage
 puts santa.lowest
 

@@ -1,12 +1,11 @@
 def clean(input)
-  lines = input.each_line.map do |line|
-    line.split("->").map do |entry|
-      entry.strip
-    end
+  input.each_line.map do |line|
+    line.split("->").map(&:strip)
   end
 end
 
-# [["gl AND gm", "go"], ["he RSHIFT 5", "hh"], ["NOT gb", "gc"], ["hq AND hs", "ht"], ["hz RSHIFT 3", "ib"], ["hz RSHIFT 2", "ia"]]
+# [["gl AND gm", "go"], ["he RSHIFT 5", "hh"], ["NOT gb", "gc"],
+# ["hq AND hs", "ht"], ["hz RSHIFT 3", "ib"], ["hz RSHIFT 2", "ia"]]
 
 class Toy
   attr_accessor :wires
@@ -42,7 +41,7 @@ class Toy
     elsif directions[1] == "OR"
       @wires[id] = find_value(directions[0]) | find_value(directions[-1])
     elsif directions.length == 2
-      @wires[id] = find_value(directions[-1]) ^ 65535
+      @wires[id] = find_value(directions[-1]) ^ 65_535
     elsif directions[1] == "RSHIFT"
       @wires[id] = find_value(directions[0]) >> directions[-1].to_i
     elsif directions[1] == "LSHIFT"
