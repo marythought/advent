@@ -5,7 +5,7 @@
 # not-a-real-room-404[oarel] is a real room.
 # totally-real-room-200[decoy] is not.
 
-def part_1(input) # aaaaa-bbb-z-y-x-123[abxyz]
+def part_1_4(input) # aaaaa-bbb-z-y-x-123[abxyz]
   sum = 0
   valid_rooms = []
   input.each do |code|
@@ -19,8 +19,8 @@ def part_1(input) # aaaaa-bbb-z-y-x-123[abxyz]
     checksum = checksum.join.reverse
     code.pop
     room_name = code.join
-    serial_num = code.select { |char| char.match(/["0-9"]/) }.join
-    code = code.select{ |char| !char.match(/["0-9"]/) } #[aaaaa-bbb-z-y-x-]
+    serial_num = code.select { |char| char.match(/[\d]/) }.join
+    code = code.select{ |char| !char.match(/[\d]/) } #[aaaaa-bbb-z-y-x-]
     code.delete("-") # ["a", "a", "a", "a", "a", "b", "b", "b", "z", "y", "x"]
     code.each do |char|
       if dict[char]
@@ -50,14 +50,14 @@ def part_1(input) # aaaaa-bbb-z-y-x-123[abxyz]
   [sum, valid_rooms]
 end
 
-def part_2(input)
-  valid_rooms = part_1(input)[1]
+def part_2_4(input)
+  valid_rooms = part_1_4(input)[1]
   valid_rooms.map do |room|
     # ["vkrhzxgbv-wrx-phkdlahi-215", "215"]
     room[0].each_char.map do |char|
       if char == "-"
         " "
-      elsif char.match(/["0-9"]/)
+      elsif char.match(/[\d]/)
         char
       else
         room[1].to_i.times do
@@ -66,5 +66,5 @@ def part_2(input)
         char
       end
     end
-  end.join
+  end.join.match(/northpole \S+ \S+ (\d{3})/)[1]
 end
