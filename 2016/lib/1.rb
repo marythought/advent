@@ -1,7 +1,6 @@
 def find_HQ(input)
   facing = "north"
   x, y = [0, 0]
-  visited = []
   input.each do |step|
     if facing == "north"
       if step[0] == "L"

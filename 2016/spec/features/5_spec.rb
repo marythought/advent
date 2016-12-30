@@ -2,7 +2,8 @@ require "spec_helper"
 require "5.rb"
 
 describe "5" do
-	input = "ojvtpuvg"
+	# input = "ojvtpuvg"
+	# TESTS PASS BUT TAKE A LONG TIME SO ARE COMMENTED OUT
 
 	it "returns accurate test data" do
 		# assert_equal "18f47a30", part_1_5("abc")
